@@ -5,7 +5,7 @@
 
 ## 依赖项
 - Hugging Face库（用于下载`bert-base-chinese`和`text2vec-base-chinese`模型）
-- 百度翻译API（用于`data_preprocess.ipynb`中的可选数据预处理）
+- 百度翻译API（用于`data_preprocess.ipynb`中的可选数据预处理）(非必须，这里使用的是豆包api来处理的原始文本)
 - LangChain（支持`chain.py`运行）
 
 ## 目录结构
