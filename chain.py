@@ -31,7 +31,7 @@ if not DASHSCOPE_API_KEY or DASHSCOPE_API_KEY.startswith("YOUR_OWN"):
     raise ValueError("请替换DASHSCOPE_API_KEY为有效的API密钥")
 
 # RAG 配置
-RAG_SAVE_DIR = "./saved_rag"
+RAG_SAVE_DIR = "./saved_rag" # 先去运行rag_preprocess.py
 RAG_CONFIG_PATH = os.path.join(RAG_SAVE_DIR, "rag_config.json")
 
 
