@@ -18,13 +18,13 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
 
 # ===================== 【核心配置】 =====================
-DASHSCOPE_API_KEY = ""
+DASHSCOPE_API_KEY = "" # 这里放api key
 QWEN_API_BASE = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-BERT_MODEL_PATH = "./bert_finetuned/bert_finetuned_20250908_135059"
-BERT_DEFAULT_MODEL = "bert-base-chinese"
+BERT_MODEL_PATH = "./bert_finetuned/bert_finetuned_20250908_135059"  # 先运行train_bert.py微调模型，这里导入微调好的模型
+BERT_DEFAULT_MODEL = "bert-base-chinese" # 去hugging face下载
 BERT_MAX_SEQ_LEN = 512  # 调整为更大的序列长度以容纳多轮用户输入
-MAX_CONVERSATION_ROUNDS = 5
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+MAX_CONVERSATION_ROUNDS = 5 # 最大对话轮次，手动调整
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu" # 3060laptop 下载torch 11.8
 
 # 环境变量检查
 if not DASHSCOPE_API_KEY or DASHSCOPE_API_KEY.startswith("YOUR_OWN"):
