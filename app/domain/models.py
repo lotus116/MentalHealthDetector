@@ -25,7 +25,7 @@ class ChatResponse(BaseModel):
     answer: str
     intent: IntentLabel
     safety_action: SafetyAction
-    sources: list[Source] = []
+    sources: list[Source] = Field(default_factory=list)
     disclaimer: str
     latency_ms: int
 

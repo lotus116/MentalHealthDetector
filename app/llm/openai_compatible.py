@@ -52,11 +52,17 @@ class OpenAICompatibleLLM(LLMProvider):
 
     def _schema_instruction(self, schema: type[T]) -> str:
         if schema is SafetyClassification:
-            actions = ", ".join(action.value for action in SafetyAction)
-            return f'{{"action": one of [{actions}], "confidence": number between 0 and 1}}'
+            actions = [action.value for action in SafetyAction]
+            return json.dumps(
+                {"action": {"enum": actions}, "confidence": "number between 0 and 1"},
+                ensure_ascii=False,
+            )
         if schema is IntentClassification:
-            labels = ", ".join(label.value for label in IntentLabel)
-            return f'{{"label": one of [{labels}], "confidence": number between 0 and 1}}'
+            labels = [label.value for label in IntentLabel]
+            return json.dumps(
+                {"label": {"enum": labels}, "confidence": "number between 0 and 1"},
+                ensure_ascii=False,
+            )
         if schema is GeneratedAnswer:
             return '{"answer": short non-diagnostic answer string}'
         return json.dumps(schema.model_json_schema(), ensure_ascii=False)

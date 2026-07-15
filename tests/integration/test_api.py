@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 
+from app.api.deps import get_sessions
 from app.main import app
 
 
@@ -61,3 +62,22 @@ def test_conversation_session_isolation():
     second = client.post("/chat", json={"message": "还有点睡不好", "session_id": "session-b"})
     assert second.status_code == 200
     assert "当前会话" not in second.json()["answer"]
+
+
+def test_clear_session_uses_dependency_override():
+    class FakeSessions:
+        def __init__(self):
+            self.cleared: str | None = None
+
+        def clear(self, session_id: str) -> None:
+            self.cleared = session_id
+
+    fake = FakeSessions()
+    app.dependency_overrides[get_sessions] = lambda: fake
+    try:
+        response = client.delete("/chat/override-session")
+    finally:
+        app.dependency_overrides.pop(get_sessions, None)
+
+    assert response.status_code == 200
+    assert fake.cleared == "override-session"
