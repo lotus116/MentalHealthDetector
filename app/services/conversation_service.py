@@ -62,12 +62,17 @@ class ConversationService:
             elif intent == IntentLabel.clarification_needed:
                 answer = "我还不确定你希望获得哪类帮助。你可以选择知识问答、问卷、自助资源或普通支持性对话。"
             else:
-                generated = self.llm.structured(
-                    "supportive_response",
-                    {"message": request.message, "history": history},
-                    GeneratedAnswer,
-                )
-                answer = generated.answer
+                try:
+                    generated = self.llm.structured(
+                        "supportive_response",
+                        {"message": request.message, "history": history},
+                        GeneratedAnswer,
+                    )
+                    answer = generated.answer
+                except Exception:
+                    answer = (
+                        "我可以提供一般性信息和下一步建议，但不能诊断。你可以描述当前困扰、持续时间以及希望了解的方向。"
+                    )
 
         answer = self.policy.validate(answer)
         self.sessions.append(request.session_id, "user", request.message[:400])

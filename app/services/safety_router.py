@@ -29,5 +29,8 @@ class SafetyRouter:
         for pattern in MEDICAL_ADVICE_PATTERNS:
             if re.search(pattern, message, flags=re.IGNORECASE):
                 return SafetyResult(action=SafetyAction.refuse_medical_advice, matched_rule=pattern, confidence=0.95)
-        llm_result = self.llm.structured("safety_classifier", {"message": message}, SafetyClassification)
-        return SafetyResult(action=llm_result.action, confidence=llm_result.confidence)
+        try:
+            llm_result = self.llm.structured("safety_classifier", {"message": message}, SafetyClassification)
+            return SafetyResult(action=llm_result.action, confidence=llm_result.confidence)
+        except Exception:
+            return SafetyResult(action=SafetyAction.continue_normal, matched_rule="llm_fallback", confidence=0.5)

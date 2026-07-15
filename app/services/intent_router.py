@@ -34,7 +34,10 @@ class IntentRouter:
         for label, pattern in RULES:
             if re.search(pattern, message, flags=re.IGNORECASE):
                 return IntentResult(label=label, confidence=0.96, rationale=f"rule:{pattern}")
-        result = self.llm.structured("intent_router", {"message": message}, IntentClassification)
+        try:
+            result = self.llm.structured("intent_router", {"message": message}, IntentClassification)
+        except Exception:
+            return IntentResult(label=IntentLabel.supportive_conversation, confidence=0.5, rationale="llm_fallback")
         if result.confidence < 0.5:
             return IntentResult(
                 label=IntentLabel.clarification_needed, confidence=result.confidence, rationale="low_confidence"
