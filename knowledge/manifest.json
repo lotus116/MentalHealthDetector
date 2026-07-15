@@ -1,0 +1,23 @@
+{
+  "documents": [
+    {
+      "title": "压力与身心反应概览",
+      "source_id": "kb-stress-001",
+      "path": "sources/stress_overview.md",
+      "license": "project-authored summary"
+    },
+    {
+      "title": "何时考虑寻求专业支持",
+      "source_id": "kb-help-001",
+      "path": "sources/seeking_support.md",
+      "license": "project-authored summary"
+    },
+    {
+      "title": "自我了解问卷的边界",
+      "source_id": "kb-survey-001",
+      "path": "sources/survey_boundaries.md",
+      "license": "project-authored summary"
+    }
+  ]
+}
+

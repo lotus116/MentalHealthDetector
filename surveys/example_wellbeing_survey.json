@@ -1,0 +1,38 @@
+{
+  "id": "example_wellbeing_survey",
+  "title": "压力/情绪自我了解",
+  "description": "用于整理近期体验，不用于诊断。",
+  "questions": [
+    {
+      "id": "sleep",
+      "text": "过去两周，睡眠受到压力或情绪影响的频率？",
+      "options": [
+        {"label": "几乎没有", "score": 0},
+        {"label": "有几天", "score": 1},
+        {"label": "超过一半天数", "score": 2},
+        {"label": "几乎每天", "score": 3}
+      ]
+    },
+    {
+      "id": "focus",
+      "text": "过去两周，注意力或效率受到影响的频率？",
+      "options": [
+        {"label": "几乎没有", "score": 0},
+        {"label": "有几天", "score": 1},
+        {"label": "超过一半天数", "score": 2},
+        {"label": "几乎每天", "score": 3}
+      ]
+    },
+    {
+      "id": "support",
+      "text": "过去两周，你感到需要他人支持但难以开口的频率？",
+      "options": [
+        {"label": "几乎没有", "score": 0},
+        {"label": "有几天", "score": 1},
+        {"label": "超过一半天数", "score": 2},
+        {"label": "几乎每天", "score": 3}
+      ]
+    }
+  ]
+}
+
