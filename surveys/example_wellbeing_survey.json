@@ -1,38 +1,23 @@
 {
   "id": "example_wellbeing_survey",
-  "title": "压力/情绪自我了解",
-  "description": "用于整理近期体验，不用于诊断。",
+  "title": "压力/情绪自我了解问卷",
+  "description": "用于整理过去两周的压力、情绪和支持需求体验，不用于诊断。",
+  "options": [
+    {"label": "几乎没有", "score": 0},
+    {"label": "有几天", "score": 1},
+    {"label": "超过一半天数", "score": 2},
+    {"label": "几乎每天", "score": 3}
+  ],
   "questions": [
-    {
-      "id": "sleep",
-      "text": "过去两周，睡眠受到压力或情绪影响的频率？",
-      "options": [
-        {"label": "几乎没有", "score": 0},
-        {"label": "有几天", "score": 1},
-        {"label": "超过一半天数", "score": 2},
-        {"label": "几乎每天", "score": 3}
-      ]
-    },
-    {
-      "id": "focus",
-      "text": "过去两周，注意力或效率受到影响的频率？",
-      "options": [
-        {"label": "几乎没有", "score": 0},
-        {"label": "有几天", "score": 1},
-        {"label": "超过一半天数", "score": 2},
-        {"label": "几乎每天", "score": 3}
-      ]
-    },
-    {
-      "id": "support",
-      "text": "过去两周，你感到需要他人支持但难以开口的频率？",
-      "options": [
-        {"label": "几乎没有", "score": 0},
-        {"label": "有几天", "score": 1},
-        {"label": "超过一半天数", "score": 2},
-        {"label": "几乎每天", "score": 3}
-      ]
-    }
+    {"id": "sleep", "text": "过去两周，睡眠受到压力或情绪影响的频率？"},
+    {"id": "focus", "text": "过去两周，注意力或效率受到影响的频率？"},
+    {"id": "tension", "text": "过去两周，你感到身体紧绷、心慌或难以放松的频率？"},
+    {"id": "low_mood", "text": "过去两周，你感到情绪低落、空心或提不起劲的频率？"},
+    {"id": "worry", "text": "过去两周，你反复担心事情失控或难以停止担心的频率？"},
+    {"id": "irritability", "text": "过去两周，你比平时更容易烦躁或被小事触发的频率？"},
+    {"id": "avoidance", "text": "过去两周，你因为压力或情绪而回避学习、工作或社交的频率？"},
+    {"id": "appetite", "text": "过去两周，你的食欲或饮食节奏明显受影响的频率？"},
+    {"id": "support", "text": "过去两周，你感到需要他人支持但难以开口的频率？"},
+    {"id": "function", "text": "过去两周，这些体验影响日常生活、学习、工作或人际的频率？"}
   ]
 }
-

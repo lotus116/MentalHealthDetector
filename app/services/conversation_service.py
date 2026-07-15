@@ -38,8 +38,10 @@ class ConversationService:
 
     def handle(self, request: ChatRequest) -> ChatResponse:
         start = time.perf_counter()
+        history = self.sessions.recent_history(request.session_id)
         safety = self.safety_router.route(request.message)
         sources: list[Source] = []
+
         if safety.action == SafetyAction.fixed_crisis_response:
             answer = CRISIS_RESPONSE
             intent = IntentLabel.crisis_signal
@@ -52,7 +54,7 @@ class ConversationService:
             if intent == IntentLabel.knowledge_query:
                 answer, sources = self.rag.answer(request.message)
             elif intent == IntentLabel.survey_request:
-                answer = "你可以进入“压力/情绪自我了解”问卷页。问卷由程序确定性计分，结果只作自我了解参考。"
+                answer = "你可以进入“压力/情绪自我了解问卷”页面。问卷由程序确定性计分，结果只作自我了解参考。"
             elif intent == IntentLabel.resource_request:
                 answer = self.resources.get_resources(request.region or "generic")
             elif intent == IntentLabel.out_of_scope:
@@ -60,8 +62,13 @@ class ConversationService:
             elif intent == IntentLabel.clarification_needed:
                 answer = "我还不确定你希望获得哪类帮助。你可以选择知识问答、问卷、自助资源或普通支持性对话。"
             else:
-                generated = self.llm.structured("supportive_response", {"message": request.message}, GeneratedAnswer)
+                generated = self.llm.structured(
+                    "supportive_response",
+                    {"message": request.message, "history": history},
+                    GeneratedAnswer,
+                )
                 answer = generated.answer
+
         answer = self.policy.validate(answer)
         self.sessions.append(request.session_id, "user", request.message[:400])
         self.sessions.append(request.session_id, "assistant", answer[:800])

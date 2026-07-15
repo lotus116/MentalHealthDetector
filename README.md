@@ -15,9 +15,9 @@
 - Deterministic SafetyRouter for explicit crisis and medication-advice requests.
 - IntentRouter for knowledge Q&A, survey, resources, supportive conversation and out-of-scope routing.
 - Cited RAG answers from a small project-authored knowledge base.
-- Config-driven survey with deterministic scoring.
+- 10-question config-driven survey with deterministic scoring.
 - Streamlit demo with disclaimer, clear session, feedback and source-aware flows.
-- SQLite feedback repository storing redacted comment preview and digest only.
+- Configured support-resource navigation and SQLite feedback storage with redacted comment preview/digest only.
 - Legacy BERT isolated as optional disabled adapter, not a clinical model.
 
 ## Architecture

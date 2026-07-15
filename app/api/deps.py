@@ -28,7 +28,7 @@ def get_conversation_service() -> ConversationService:
         SafetyRouter(llm),
         IntentRouter(llm),
         RagService(settings),
-        ResourceService(),
+        ResourceService(settings.support_resources_path),
         ResponsePolicy(),
         get_sessions(),
         llm,

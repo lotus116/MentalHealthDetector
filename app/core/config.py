@@ -28,6 +28,7 @@ class Settings(BaseSettings):
     default_region: str = "generic"
     knowledge_manifest_path: Path = Path("knowledge/manifest.json")
     survey_path: Path = Path("surveys/example_wellbeing_survey.json")
+    support_resources_path: Path = Path("resources/support_resources.json")
     sqlite_path: Path = Path("data/app.sqlite3")
     log_level: str = "INFO"
 

@@ -15,12 +15,14 @@ class SurveyService:
 
     def score(self, answers: dict[str, int]) -> dict:
         questions = self.config["questions"]
+        default_options = self.config.get("options", [])
         total = 0
         max_total = 0
         for q in questions:
             qid = q["id"]
             value = answers.get(qid)
-            valid = [opt["score"] for opt in q["options"]]
+            options = q.get("options", default_options)
+            valid = [opt["score"] for opt in options]
             if value is None or value not in valid:
                 raise ValueError(f"Invalid answer for {qid}")
             total += value
