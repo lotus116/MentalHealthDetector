@@ -41,3 +41,23 @@ def test_survey_score_api():
 def test_survey_score_rejects_incomplete_answers():
     response = client.post("/survey/score", json={"answers": {"sleep": 1}})
     assert response.status_code == 422
+
+
+def test_feedback_submission():
+    response = client.post("/feedback", json={"session_id": "t", "rating": "helpful", "comment": "谢谢"})
+    assert response.status_code == 200
+    assert response.json()["stored"] is True
+
+
+def test_chat_rejects_overlong_input():
+    response = client.post("/chat", json={"message": "a" * 4001, "session_id": "too-long"})
+    assert response.status_code == 422
+
+
+def test_conversation_session_isolation():
+    client.delete("/chat/session-a")
+    client.delete("/chat/session-b")
+    client.post("/chat", json={"message": "最近有点烦，想聊聊", "session_id": "session-a"})
+    second = client.post("/chat", json={"message": "还有点睡不好", "session_id": "session-b"})
+    assert second.status_code == 200
+    assert "当前会话" not in second.json()["answer"]
