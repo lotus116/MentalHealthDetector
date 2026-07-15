@@ -9,4 +9,3 @@ class OptionalClassifier(ABC):
     @abstractmethod
     def classify(self, text: str) -> IntentResult | None:
         """Return a high-confidence intent candidate, or None."""
-

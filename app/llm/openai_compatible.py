@@ -41,4 +41,3 @@ class OpenAICompatibleLLM(LLMProvider):
             return schema.model_validate_json(content)
         except ValidationError as exc:
             raise RuntimeError(f"LLM output failed schema validation: {exc}") from exc
-

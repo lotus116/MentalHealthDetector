@@ -46,4 +46,3 @@ class FeedbackIn(BaseModel):
     session_id: str = "default"
     rating: Literal["helpful", "not_helpful", "inaccurate", "unsafe"]
     comment: str | None = Field(default=None, max_length=1000)
-

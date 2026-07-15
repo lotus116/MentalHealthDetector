@@ -9,4 +9,3 @@ def build_llm() -> LLMProvider:
     if settings.llm_provider == "openai_compatible":
         return OpenAICompatibleLLM(settings)
     return MockLLM()
-

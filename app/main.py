@@ -26,4 +26,3 @@ app.include_router(routes_health.router)
 app.include_router(routes_chat.router)
 app.include_router(routes_survey.router)
 app.include_router(routes_feedback.router)
-

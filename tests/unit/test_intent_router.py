@@ -11,4 +11,3 @@ def test_survey_rule():
 def test_resource_rule():
     result = IntentRouter(MockLLM()).route("我想找心理咨询资源")
     assert result.label == IntentLabel.resource_request
-

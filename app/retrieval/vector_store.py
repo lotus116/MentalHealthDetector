@@ -15,7 +15,13 @@ class LocalVectorStore:
         for doc in documents:
             for idx, chunk in enumerate(split_text(doc.text)):
                 self.chunks.append(
-                    RetrievedChunk(title=doc.title, source_id=doc.source_id, chunk_id=f"{doc.source_id}#{idx}", text=chunk, score=0.0)
+                    RetrievedChunk(
+                        title=doc.title,
+                        source_id=doc.source_id,
+                        chunk_id=f"{doc.source_id}#{idx}",
+                        text=chunk,
+                        score=0.0,
+                    )
                 )
         self.vectorizer = TfidfVectorizer(analyzer="char_wb", ngram_range=(2, 4))
         self.matrix = self.vectorizer.fit_transform([c.text for c in self.chunks]) if self.chunks else None
@@ -32,4 +38,3 @@ class LocalVectorStore:
             if chunk.score > 0:
                 results.append(chunk)
         return results
-

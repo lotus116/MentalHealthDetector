@@ -23,4 +23,3 @@ def load_manifest(path: Path) -> list[KnowledgeDocument]:
             )
         )
     return docs
-

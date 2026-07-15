@@ -17,4 +17,3 @@ def test_survey_rejects_invalid_values():
     service = SurveyService(Path("surveys/example_wellbeing_survey.json"))
     with pytest.raises(ValueError):
         service.score({"sleep": 9, "focus": 2, "support": 3})
-

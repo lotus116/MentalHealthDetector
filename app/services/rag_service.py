@@ -21,14 +21,8 @@ class RagService:
                 "你可以换一种问法，或咨询合格专业人员获取个体化建议。",
                 [],
             )
-        sources = [
-            Source(title=c.title, source_id=c.chunk_id, snippet=c.text[:180])
-            for c in chunks
-        ]
+        sources = [Source(title=c.title, source_id=c.chunk_id, snippet=c.text[:180]) for c in chunks]
         answer = (
-            "根据当前知识库，相关信息提示："
-            f"{chunks[0].text[:260]} "
-            "这只能作为一般信息，不能用于诊断或替代专业评估。"
+            f"根据当前知识库，相关信息提示：{chunks[0].text[:260]} 这只能作为一般信息，不能用于诊断或替代专业评估。"
         )
         return answer, sources
-

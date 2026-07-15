@@ -43,4 +43,3 @@ def get_survey_service() -> SurveyService:
 @lru_cache
 def get_feedback_repo() -> FeedbackRepository:
     return FeedbackRepository(get_settings().sqlite_path)
-

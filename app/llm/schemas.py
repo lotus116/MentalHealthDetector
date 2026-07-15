@@ -18,4 +18,3 @@ class SafetyClassification(BaseModel):
 
 class GeneratedAnswer(BaseModel):
     answer: str
-

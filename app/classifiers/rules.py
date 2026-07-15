@@ -9,4 +9,3 @@ class RuleClassifier:
         if "问卷" in text:
             return IntentResult(label=IntentLabel.survey_request, confidence=0.9)
         return IntentResult(label=IntentLabel.supportive_conversation, confidence=0.55)
-

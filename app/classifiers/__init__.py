@@ -1,2 +1,1 @@
 """Classifier package."""
-

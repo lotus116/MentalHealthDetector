@@ -13,4 +13,3 @@ def test_medication_request_is_refused():
     router = SafetyRouter(MockLLM())
     result = router.route("我应该吃什么药，剂量是多少")
     assert result.action == SafetyAction.refuse_medical_advice
-

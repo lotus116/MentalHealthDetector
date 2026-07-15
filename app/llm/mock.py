@@ -23,10 +23,6 @@ class MockLLM(LLMProvider):
         if schema is SafetyClassification:
             return schema(action=SafetyAction.continue_normal, confidence=0.55)  # type: ignore[return-value]
         if schema is GeneratedAnswer:
-            answer = (
-                "我可以提供一般性信息和下一步建议，但不能诊断。"
-                "你可以描述当前困扰、持续时间以及希望了解的方向。"
-            )
+            answer = "我可以提供一般性信息和下一步建议，但不能诊断。你可以描述当前困扰、持续时间以及希望了解的方向。"
             return schema(answer=answer)  # type: ignore[return-value]
         raise ValueError(f"Unsupported schema for MockLLM: {schema}")
-

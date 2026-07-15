@@ -19,4 +19,3 @@ def text_digest(text: str) -> str:
     """Stable digest for debugging without storing sensitive text."""
 
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
-

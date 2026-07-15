@@ -24,4 +24,3 @@ class FeedbackRepository:
                 "INSERT INTO feedback (session_id, rating, comment_preview, comment_digest) VALUES (?, ?, ?, ?)",
                 (feedback.session_id, feedback.rating, preview, digest),
             )
-

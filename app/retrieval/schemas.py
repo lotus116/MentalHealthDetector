@@ -16,4 +16,3 @@ class RetrievedChunk(BaseModel):
     chunk_id: str
     text: str
     score: float
-

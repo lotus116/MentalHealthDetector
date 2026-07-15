@@ -7,7 +7,9 @@ API_URL = st.sidebar.text_input("API URL", value="http://localhost:8000")
 
 st.set_page_config(page_title="心理健康信息支持助手", layout="wide")
 st.title("心理健康信息支持助手")
-st.info("本助手仅提供一般信息、自我了解参考和求助路径，不提供医学诊断、疾病概率、药物建议或治疗决定。默认只保留当前会话内容。")
+st.info(
+    "本助手仅提供一般信息、自我了解参考和求助路径，不提供医学诊断、疾病概率、药物建议或治疗决定。默认只保留当前会话内容。"
+)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -23,7 +25,9 @@ with tab_chat:
     if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
         try:
-            response = requests.post(f"{API_URL}/chat", json={"message": prompt, "mode": mode, "session_id": "streamlit"}, timeout=20)
+            response = requests.post(
+                f"{API_URL}/chat", json={"message": prompt, "mode": mode, "session_id": "streamlit"}, timeout=20
+            )
             response.raise_for_status()
             data = response.json()
             st.session_state.messages.append({"role": "assistant", "content": data["answer"]})
@@ -66,10 +70,11 @@ with tab_survey:
 with tab_resources:
     st.write("如存在即时危险，请优先联系当地紧急服务或前往最近的急诊/安全地点。")
     if st.button("获取专业支持路径"):
-        data = requests.post(f"{API_URL}/chat", json={"message": "我想寻找专业支持资源", "mode": "resources"}, timeout=10).json()
+        data = requests.post(
+            f"{API_URL}/chat", json={"message": "我想寻找专业支持资源", "mode": "resources"}, timeout=10
+        ).json()
         st.write(data["answer"])
 
 with tab_eval:
     st.write("开发者评估请在命令行运行：`make evaluate` 或分别运行 `python evaluation/evaluate_*.py`。")
     st.write("评估脚本只报告小型合成集的实际结果，不代表临床效果或生产性能。")
-

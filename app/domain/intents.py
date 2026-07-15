@@ -11,4 +11,3 @@ class IntentLabel(StrEnum):
     clarification_needed = "clarification_needed"
     crisis_signal = "crisis_signal"
     out_of_scope = "out_of_scope"
-

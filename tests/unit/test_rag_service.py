@@ -12,4 +12,3 @@ def test_rag_refuses_when_no_evidence():
     answer, sources = RagService(get_settings()).answer("量子计算显卡挖矿收益")
     assert sources == []
     assert "没有在当前示例知识库中找到足够依据" in answer
-

@@ -14,4 +14,3 @@ class LLMProvider(ABC):
     @abstractmethod
     def structured(self, prompt_name: str, variables: dict, schema: type[T]) -> T:
         """Return a schema-validated model."""
-

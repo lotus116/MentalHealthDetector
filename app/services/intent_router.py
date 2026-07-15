@@ -36,5 +36,7 @@ class IntentRouter:
                 return IntentResult(label=label, confidence=0.96, rationale=f"rule:{pattern}")
         result = self.llm.structured("intent_router", {"message": message}, IntentClassification)
         if result.confidence < 0.5:
-            return IntentResult(label=IntentLabel.clarification_needed, confidence=result.confidence, rationale="low_confidence")
+            return IntentResult(
+                label=IntentLabel.clarification_needed, confidence=result.confidence, rationale="low_confidence"
+            )
         return IntentResult(label=result.label, confidence=result.confidence, rationale="llm")

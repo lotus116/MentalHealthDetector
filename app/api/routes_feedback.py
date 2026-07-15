@@ -13,4 +13,3 @@ router = APIRouter(prefix="/feedback", tags=["feedback"])
 def add_feedback(feedback: FeedbackIn, repo: FeedbackRepository = Depends(get_feedback_repo)) -> dict:
     repo.add(feedback)
     return {"stored": True}
-

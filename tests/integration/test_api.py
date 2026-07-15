@@ -24,4 +24,3 @@ def test_survey_score_api():
     response = client.post("/survey/score", json={"answers": {"sleep": 1, "focus": 1, "support": 1}})
     assert response.status_code == 200
     assert response.json()["score"] == 3
-

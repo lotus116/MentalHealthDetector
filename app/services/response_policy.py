@@ -18,4 +18,3 @@ class ResponsePolicy:
             if re.search(pattern, answer):
                 return "我不能提供诊断、疾病概率、药物剂量或治疗决定。可以提供一般信息、问卷参考和求助路径。"
         return answer
-

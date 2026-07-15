@@ -18,4 +18,3 @@ def chat(request: ChatRequest, service: ConversationService = Depends(get_conver
 def clear_session(session_id: str) -> dict:
     get_sessions().clear(session_id)
     return {"cleared": True, "session_id": session_id}
-

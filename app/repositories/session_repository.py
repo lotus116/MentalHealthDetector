@@ -15,4 +15,3 @@ class SessionRepository:
 
     def clear(self, session_id: str) -> None:
         self._store.pop(session_id, None)
-

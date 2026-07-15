@@ -24,4 +24,3 @@ def score_survey(payload: SurveyAnswers, service: SurveyService = Depends(get_su
         return service.score(payload.answers)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
-

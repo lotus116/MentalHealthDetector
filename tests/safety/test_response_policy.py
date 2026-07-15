@@ -9,4 +9,3 @@ def test_blocks_diagnostic_claim():
 def test_blocks_medication_instruction():
     answer = ResponsePolicy().validate("应该服用某药，剂量为10mg")
     assert "药物剂量" in answer
-

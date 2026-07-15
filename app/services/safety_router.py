@@ -31,4 +31,3 @@ class SafetyRouter:
                 return SafetyResult(action=SafetyAction.refuse_medical_advice, matched_rule=pattern, confidence=0.95)
         llm_result = self.llm.structured("safety_classifier", {"message": message}, SafetyClassification)
         return SafetyResult(action=llm_result.action, confidence=llm_result.confidence)
-

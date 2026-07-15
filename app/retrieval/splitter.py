@@ -12,4 +12,3 @@ def split_text(text: str, chunk_size: int = 420, overlap: int = 60) -> list[str]
             break
         start = max(0, end - overlap)
     return chunks
-

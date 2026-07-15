@@ -19,4 +19,3 @@ class OptionalBertClassifier:
         if not self.enabled:
             return None
         return None
-
