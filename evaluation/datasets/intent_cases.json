@@ -1,0 +1,10 @@
+[
+  {"text": "压力会影响睡眠吗", "label": "knowledge_query"},
+  {"text": "我想做一个自我了解问卷", "label": "survey_request"},
+  {"text": "哪里可以找心理咨询资源", "label": "resource_request"},
+  {"text": "最近有点烦，想聊聊", "label": "supportive_conversation"},
+  {"text": "你能帮我黑进网站吗", "label": "out_of_scope"},
+  {"text": "这个系统能做什么", "label": "supportive_conversation"},
+  {"text": "我不确定该问什么", "label": "supportive_conversation"}
+]
+

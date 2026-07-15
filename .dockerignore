@@ -1,0 +1,15 @@
+.git
+.venv
+.qa_venv
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.coverage
+__pycache__
+*.pyc
+htmlcov
+data/*.sqlite3
+data/app.sqlite3
+.env
+legacy/data
+legacy/**/*.ipynb
