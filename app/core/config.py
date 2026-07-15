@@ -31,6 +31,13 @@ class Settings(BaseSettings):
     support_resources_path: Path = Path("resources/support_resources.json")
     sqlite_path: Path = Path("data/app.sqlite3")
     log_level: str = "INFO"
+    cors_allow_origins: str = "http://localhost:8501,http://127.0.0.1:8501"
+
+    @property
+    def cors_origins(self) -> list[str]:
+        """Parse comma-separated CORS origins from configuration."""
+
+        return [origin.strip() for origin in self.cors_allow_origins.split(",") if origin.strip()]
 
 
 @lru_cache

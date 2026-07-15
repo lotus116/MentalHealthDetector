@@ -3,6 +3,7 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.qa_venv/
 dist/
 build/
 *.egg-info/
@@ -10,4 +11,4 @@ build/
 data/app.sqlite3
 data/*.sqlite3
 htmlcov/
-
+.coverage

@@ -142,6 +142,17 @@ Implemented evaluation scripts report actual results on small synthetic datasets
 
 These are engineering regression checks, not clinical metrics.
 
+Latest QA run on 2026-07-15:
+
+- `pytest -q`: 33 passed.
+- Coverage: 86% total line coverage for `app`.
+- Intent synthetic set: accuracy 1.0, macro F1 0.7143.
+- Safety synthetic set: crisis recall 1.0, non-crisis false positive rate 0.25, diagnostic/medication violations 0.
+- RAG synthetic set: retrieval hit rate 0.9333, citation completeness 0.9333.
+- Docker Compose: API and Streamlit services built and started successfully.
+
+See `docs/final_qa_report.md`, `docs/final_acceptance_matrix.md`, and `docs/remaining_gaps.md` for the full acceptance record.
+
 ## v1 to v2
 
 - v1: monolithic CLI combining LangChain RAG, Qwen-compatible API and BERT risk-style classification.

@@ -18,11 +18,12 @@ st.info(
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-with st.expander("开发者连接状态", expanded=False):
-    st.caption(f"API: {API_URL}")
+with st.expander("系统状态", expanded=False):
     try:
         health = requests.get(f"{API_URL}/health", timeout=5).json()
-        st.json(health)
+        st.write(f"后端状态：{health.get('status', 'unknown')}")
+        st.write(f"应用版本：{health.get('version', 'unknown')}")
+        st.write(f"LLM 模式：{health.get('llm_provider', 'unknown')}")
     except requests.RequestException as exc:
         st.error(f"API 不可用：{exc}")
 
