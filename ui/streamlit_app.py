@@ -78,9 +78,14 @@ with tab_chat:
 
     col_clear, col_feedback = st.columns([1, 3])
     if col_clear.button("清空会话"):
-        requests.delete(f"{API_URL}/chat/{SESSION_ID}", timeout=5)
-        st.session_state.messages = []
-        st.rerun()
+        try:
+            resp = requests.delete(f"{API_URL}/chat/{SESSION_ID}", timeout=5)
+            resp.raise_for_status()
+        except requests.RequestException as exc:
+            st.error(f"清空会话失败：{exc}")
+        else:
+            st.session_state.messages = []
+            st.rerun()
 
     if st.session_state.messages:
         feedback_labels = {
