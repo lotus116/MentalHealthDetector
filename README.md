@@ -97,6 +97,20 @@ For DashScope-compatible mode, set `DASHSCOPE_API_KEY` and compatible base URL/m
 docker compose up --build
 ```
 
+Then open:
+
+- Streamlit UI: http://localhost:8501
+- API: http://localhost:8000
+- Swagger/OpenAPI: http://localhost:8000/docs
+
+If Docker Desktop BuildKit fails under a non-ASCII workspace path, use:
+
+```powershell
+$env:DOCKER_BUILDKIT='0'
+$env:COMPOSE_DOCKER_CLI_BUILD='0'
+docker compose up --build
+```
+
 ## Data and Knowledge Sources
 
 The v2 default knowledge base uses short project-authored summaries in `knowledge/sources/`. Legacy data is preserved under `legacy/` but is not used by default because source, license and privacy status are unclear.
@@ -146,4 +160,3 @@ These are engineering regression checks, not clinical metrics.
 - Safety rules can over-trigger on academic/news mentions.
 - No real location-aware hotline lookup is implemented.
 - No clinical validation, real user metrics or production deployment claims are made.
-

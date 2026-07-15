@@ -1,9 +1,11 @@
 """Streamlit demo for the Mental Health Information Support Assistant."""
 
+import os
+
 import requests
 import streamlit as st
 
-API_URL = st.sidebar.text_input("API URL", value="http://localhost:8000")
+API_URL = st.sidebar.text_input("API URL", value=os.getenv("API_URL", "http://localhost:8000"))
 
 st.set_page_config(page_title="心理健康信息支持助手", layout="wide")
 st.title("心理健康信息支持助手")
