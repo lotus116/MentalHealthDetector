@@ -1,3 +1,5 @@
+name: mh-support
+
 services:
   api:
     build: .
@@ -7,4 +9,3 @@ services:
       - "8000:8000"
     volumes:
       - ./data:/app/data
-
