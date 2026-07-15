@@ -24,6 +24,7 @@ dev = [
 [tool.ruff]
 line-length = 120
 target-version = "py311"
+exclude = ["legacy"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -36,3 +37,4 @@ include = ["app*"]
 python_version = "3.11"
 ignore_missing_imports = true
 strict = false
+exclude = "legacy"

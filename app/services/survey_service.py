@@ -21,9 +21,9 @@ class SurveyService:
             qid = q["id"]
             value = answers.get(qid)
             valid = [opt["score"] for opt in q["options"]]
-            if value not in valid:
+            if value is None or value not in valid:
                 raise ValueError(f"Invalid answer for {qid}")
-            total += int(value)
+            total += value
             max_total += max(valid)
         percent = round(total / max_total, 3) if max_total else 0.0
         interpretation = "近期压力体验较少"
@@ -38,4 +38,3 @@ class SurveyService:
             "interpretation": interpretation,
             "disclaimer": "分数仅用于自我了解参考，不是医学诊断，也不决定你是否有权获得帮助。",
         }
-

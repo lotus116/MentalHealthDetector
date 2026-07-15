@@ -3,7 +3,7 @@
 import time
 
 from app.domain.intents import IntentLabel
-from app.domain.models import ChatRequest, ChatResponse
+from app.domain.models import ChatRequest, ChatResponse, Source
 from app.domain.safety import CRISIS_RESPONSE, NON_DIAGNOSTIC_DISCLAIMER, SafetyAction
 from app.llm.base import LLMProvider
 from app.llm.schemas import GeneratedAnswer
@@ -39,7 +39,7 @@ class ConversationService:
     def handle(self, request: ChatRequest) -> ChatResponse:
         start = time.perf_counter()
         safety = self.safety_router.route(request.message)
-        sources = []
+        sources: list[Source] = []
         if safety.action == SafetyAction.fixed_crisis_response:
             answer = CRISIS_RESPONSE
             intent = IntentLabel.crisis_signal
@@ -74,4 +74,3 @@ class ConversationService:
             disclaimer=NON_DIAGNOSTIC_DISCLAIMER,
             latency_ms=latency_ms,
         )
-
